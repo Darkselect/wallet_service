@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/V001_create_user_table.sql
+  - include:
+      file: db/changelog/changeset/V002_create_user_transaction_table.sql
+  - include:
+      file: db/changelog/changeset/V003_create_admin_table.sql

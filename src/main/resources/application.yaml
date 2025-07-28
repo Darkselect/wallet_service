@@ -1,0 +1,49 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: wallet-service
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/${POSTGRES_DB:wallet_db}
+    username: ${POSTGRES_USER:wallet_user}
+    password: ${POSTGRES_PASSWORD:wallet_pass}
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+logging:
+  level:
+    root: INFO
+    org.springframework: DEBUG
+
+
+async:
+  core-pool-size: 5
+  max-pool-size: 10
+  queue-capacity: 15
+  thread-name-prefix: wallet-service
+
+cache:
+  redis-batch-size: 500
+
+security:
+  token: hdZlm1oR93s8OwAq1P+6jco3XImZP2Gos5mZTx3LoNM=
+  expiration: 3600000
