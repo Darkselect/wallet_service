@@ -44,7 +44,6 @@ public class UserOperationServiceImpl implements UserOperationService {
         return userRepository.save(existingUser);
     }
 
-    @Transactional
     public User getUserFromDbAndCacheById(UUID userId) {
         log.debug("Получение пользователя с ID: {}", userId);
         return userCacheService.findUserById(userId)
