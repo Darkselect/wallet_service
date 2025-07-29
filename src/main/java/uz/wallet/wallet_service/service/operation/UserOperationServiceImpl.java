@@ -21,6 +21,7 @@ public class UserOperationServiceImpl implements UserOperationService {
     private final UserCacheService userCacheService;
     private final UserCacheMapper userCacheMapper;
 
+    @Transactional
     public void saveUser(User user) {
         log.info("Сохранение пользователя: {}", user);
         cacheUser(user);
